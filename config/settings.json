@@ -1,5 +1,8 @@
 {
-  "watch_dir": "E:\\DownLoad",
+  "watch_dirs": [
+    "E:\\DownLoad",
+    "E:\\发票行程单"
+  ],
   "rules": {
     "01_图片": [".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg", ".bmp", ".ico"],
     "02_文档": [".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".txt", ".md"],
