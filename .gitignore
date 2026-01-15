@@ -1,0 +1,14 @@
+# Python 编译文件
+__pycache__/
+*.pyc
+
+# PyInstaller 生成的文件夹
+build/
+dist/
+*.spec
+
+# PyCharm / IDE 配置文件
+.idea/
+*.xml
+# (注意：如果你想保留 vcs.xml 和 spec，可以把上面这两行去掉，只写 .idea/workspace.xml)
+/ZenFile_Release
