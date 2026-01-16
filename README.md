@@ -95,18 +95,38 @@ ZenFile 是一款轻量级的 Windows 桌面文件自动整理工具。它在后
 
 ```text
 ZenFile/
-├── assets/              # 资源文件
-│   └── icons/           # 图标文件 (logo.png, pause.png)
-├── config/              # 配置文件 (自动生成)
-│   └── settings.json    # 用户配置存储
-├── logs/                # 运行日志
-│   └── app.log
-├── src/                 # 源代码目录
-│   ├── core.py          # 核心整理逻辑 (Watchdog)
-│   ├── ui.py            # 设置界面 (Tkinter)
-│   ├── utils.py         # 工具类 (配置加载, 日志)
-│   └── startup.py       # 开机自启逻辑 (WinReg)
-└── main.py              # 程序入口 & 托盘逻辑
+│
+├── zenfile/                 # 📦 将 src 改名为项目名，作为核心包
+│   ├── __init__.py          # 暴露关键接口
+│   │
+│   ├── core/                # 🧠 核心业务层 (Business Logic)
+│   │   ├── __init__.py
+│   │   ├── organizer.py     # 原 core.py 的核心：负责文件移动、重命名
+│   │   ├── monitor.py       # 专门负责 Watchdog 监控逻辑
+│   │   ├── rules.py         # 专门负责“关键词匹配”、“后缀判断” (RuleManager)
+│   │   └── history.py       # 专门负责“撤销”、“记录” (HistoryManager)
+│   │
+│   ├── ui/                  # 🎨 界面层 (Presentation)
+│   │   ├── __init__.py
+│   │   ├── main_window.py   # 主窗口 UI 代码
+│   │   ├── tray.py          # 系统托盘相关代码 (Pystray)
+│   │   └── components.py    # 通用组件 (如按钮、弹窗)
+│   │
+│   └── utils/               # 🔧 基础设施层 (Infrastructure)
+│       ├── __init__.py
+│       ├── config.py        # 配置加载与保存
+│       ├── logger.py        # 日志系统
+│       └── system.py        # 开机自启、路径获取、权限检查
+│
+├── tests/                   # 🧪 测试目录 (专业项目标配)
+│   ├── test_rules.py        # 测试规则匹配是否准确
+│   └── test_organizer.py    # 测试文件移动是否正常
+│
+├── config/                  # 外部资源
+├── logs/
+├── main.py                  # 🚀 启动入口 (保持极简)
+├── requirements.txt
+└── README.md
 ```
 
 ## 📦 打包命令 (PyInstaller)

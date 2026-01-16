@@ -1,7 +1,7 @@
 @echo off
 chcp 65001
 echo ========================================================
-echo          正在开始打包 ZenFile (v1.0.0)...
+echo          正在开始打包 ZenFile (v1.1.0)...
 echo ========================================================
 
 :: 1. 清理旧的构建文件 (防止缓存导致的问题)
@@ -21,11 +21,18 @@ if exist "*.spec" (
 echo [3/3] 正在执行 PyInstaller...
 echo.
 
+:: 修改说明：
+:: 1. 移除了 pynput (新架构暂未启用全局快捷键监听)
+:: 2. 增加了 zenfile (核心包), pystray (托盘), PIL (图标处理)
+:: 3. 增加了 --clean (清理缓存)
+
 pyinstaller -F -w -n ZenFile ^
+    --clean ^
     --icon="assets\icons\logo.ico" ^
     --add-data="assets;assets" ^
-    --hidden-import pynput.keyboard._win32 ^
-    --hidden-import pynput.mouse._win32 ^
+    --hidden-import zenfile ^
+    --hidden-import pystray ^
+    --hidden-import PIL ^
     --hidden-import tkinter ^
 main.py
 
