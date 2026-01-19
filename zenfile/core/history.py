@@ -18,6 +18,8 @@ class HistoryManager:
         except Exception:
             return []
 
+    load = load_history
+
     @staticmethod
     def save_history(history):
         if len(history) > 1000:
